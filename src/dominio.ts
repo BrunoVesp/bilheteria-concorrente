@@ -51,12 +51,10 @@ export class Evento {
     }
     
     reservar(poltronas: number[]): void {
-        // 1. Verifica se a lista está vazia.
         if (poltronas.length === 0) {
             throw new DadosInvalidosErro("A lista de poltronas está vazia");
         }
         
-        // 2. Verifica se existem poltronas inválidas ou repetidas.
         if (
             poltronas.some(
             (p) => !Number.isInteger(p) || p < 1 || p > this.capacidade
@@ -66,22 +64,18 @@ export class Evento {
             throw new DadosInvalidosErro("Poltronas inválidas ou repetidas");
         }
 
-        // 3. Verifica se alguma poltrona já foi vendida.
         if (poltronas.some((p) => this.#poltronasVendidas.includes(p))) {
             throw new PoltronaOcupadaErro("Uma ou mais poltronas já foram vendidas");
         }
 
-        // 4. Se todas passaram nas validações, realiza a reserva.
         this.#poltronasVendidas.push(...poltronas);
     }
     
     liberar(poltronas: number[]): void {
-        // Verifica se todas as poltronas estão vendidas.
         if (poltronas.some((p) => !this.#poltronasVendidas.includes(p))) {
             throw new DadosInvalidosErro("Uma ou mais poltronas não estão vendidas");
         }
 
-        // Remove as poltronas da lista de vendidas.
         const liberar = new Set(poltronas);
 
         this.#poltronasVendidas = this.#poltronasVendidas.filter(
