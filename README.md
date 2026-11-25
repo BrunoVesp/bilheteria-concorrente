@@ -73,7 +73,9 @@ curl -X POST localhost:3000/reservas -H 'Content-Type: application/json' \
    dados ou depender de estados externos. Isso é importante porque ele é responsável diretamente pelos cálculos dos ingressos, que precisam ser realizados corretamente. Uma forma de testar esse
    código sem subir o servidor seria importar diretamente suas funções em um arquivo de testes e verificar os resultados para diferentes situações, como ingressos inteiros, meia-entrada e aplicação
    da taxa de serviço. Dessa forma, conseguimos validar os cálculos de maneira isolada, sem precisar executar toda a aplicação.
-4. Há Responder
+4. Escolheríamos a parte de preço (preco.ts), que utiliza o paradigma funcional. Poderíamos reescrevê-la no paradigma orientado a objetos, criando uma classe responsável pelos cálculos dos ingressos
+   e pela aplicação das taxas. Acredito que ficaria pior nesse caso, pois os cálculos são simples e não precisam de uma classe ou armazenar estado. O paradigma funcional torna o código mais simples
+   e fácil de testar.
 5. Se a venda rodasse em vários núcleos ao mesmo tempo, os pedidos poderiam ser processados em paralelo, mas precisaríamos de mecanismos de sincronização para evitar que duas requisições reservassem a mesma poltrona
    simultaneamente. No Node atual, a concorrência é mais simples de controlar porque o JavaScript executa uma operação por vez, permitindo marcar a poltrona antes do await. Em vários núcleos, precisaríamos proteger
    esse acesso compartilhado com travas ou mecanismos de sincronização.
@@ -83,7 +85,7 @@ curl -X POST localhost:3000/reservas -H 'Content-Type: application/json' \
 | Cenário | Pedidos | Tempo (ms) | Vendidos | Poltrona ocupada | Falha de pagamento |
 | :--- | ---: | ---: | ---: | ---: | ---: |
 | Padrão (`main.ts`) | 200 | | | | |
-| Padrão (`main.ts`) | 200 | 274ms | 731 Pedidos | 409 | 502 |
+| Resultado - Padrão (`main.ts`) | 200 | 274ms | 731 Pedidos | 409 | 502 |
 
 O bench ocupa as poltronas do evento 1: para rodar de novo, parem o `npm start` (Ctrl+C) e subam outra
 vez.
