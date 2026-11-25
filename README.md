@@ -40,12 +40,12 @@ curl -X POST localhost:3000/reservas -H 'Content-Type: application/json' \
 
 ### Integrantes
 
-| Nome | Usuário do GitHub | Parte principal |
-| :--- | :--- | :--- |
-| Bruno Hebert Sousa Felix | BrunoVesp | regras.ts e bilheteria.ts |
-| Caio Kleivson Serafim Galdino Alves | caiokleivson | main.ts |
-| Marllon Brenno Barbosa Serpa | Marllonbrenno | preco.ts |
-| Paulo Fernandes Pinheiro Neto | Paulo0675 | dominio.ts |
+| Nome | Usuário do GitHub | Parte principal | RGM |
+| :--- | :--- | :--- | :--- |
+| Bruno Hebert Sousa Felix | BrunoVesp | regras.ts e bilheteria.ts | 34895337 |
+| Caio Kleivson Serafim Galdino Alves | caiokleivson | main.ts | 34885862 |
+| Marllon Brenno Barbosa Serpa | Marllonbrenno | preco.ts | 33623112 |
+| Paulo Fernandes Pinheiro Neto | Paulo0675 | dominio.ts | 33920095 |
 
 ### Decisões
 
