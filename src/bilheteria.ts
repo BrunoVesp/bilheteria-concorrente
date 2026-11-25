@@ -22,7 +22,7 @@ export class Bilheteria {
     }
 
     async reservar(pedido: Pedido): Promise<Comprovante> {
-        if (!pedido.ingressos || pedido.ingressos.length === 0) {
+        if (!Array.isArray(pedido?.ingressos) || pedido.ingressos.length === 0) {
             throw new DadosInvalidosErro("Não há ingressos no pedido");
         }
 
